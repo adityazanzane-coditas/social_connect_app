@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "825030845854",
+    "project_id": "social-connect-app-dd349",
+    "storage_bucket": "social-connect-app-dd349.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825030845854:android:6702b843faccda040fe28f",
+        "android_client_info": {
+          "package_name": "com.social_connect_app.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWzqblCQWO5QGgYZ8BjKwH8rpuqzGXvVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
