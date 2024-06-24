@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_connect_app/core/routes/app_router.dart';
+import 'package:social_connect_app/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 import 'package:social_connect_app/firebase_options.dart';
 
-void main(){
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
@@ -15,9 +17,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter().config(),
-      
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => OnboardingBloc()
+            ,
+        ),
+      ],
+      child: MaterialApp.router(
+        routerConfig: AppRouter().config(),
+      ),
     );
   }
 }

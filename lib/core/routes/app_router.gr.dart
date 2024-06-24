@@ -9,32 +9,33 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:social_connect_app/features/home.dart' as _i1;
+import 'package:social_connect_app/features/onboarding/presentation/pages/onboarding_screen.dart'
+    as _i1;
 
 abstract class $AppRouter extends _i2.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
   final Map<String, _i2.PageFactory> pagesMap = {
-    Home.name: (routeData) {
+    OnboardingRoute.name: (routeData) {
       return _i2.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.Home(),
+        child: const _i1.OnboardingScreen(),
       );
     }
   };
 }
 
 /// generated route for
-/// [_i1.Home]
-class Home extends _i2.PageRouteInfo<void> {
-  const Home({List<_i2.PageRouteInfo>? children})
+/// [_i1.OnboardingScreen]
+class OnboardingRoute extends _i2.PageRouteInfo<void> {
+  const OnboardingRoute({List<_i2.PageRouteInfo>? children})
       : super(
-          Home.name,
+          OnboardingRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'Home';
+  static const String name = 'OnboardingRoute';
 
   static const _i2.PageInfo<void> page = _i2.PageInfo<void>(name);
 }
