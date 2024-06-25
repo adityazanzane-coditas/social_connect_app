@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 
 class ColorPallete {
   static Color whiteColor = const Color(0xFFF4F4F4);
@@ -16,6 +14,5 @@ class ColorPallete {
   static Color offWhiteOffTextColor = const Color(0xFFADADAD);
   static Color textFieldWhiteColor = const Color(0xFFCE9BED);
   static Color purpleButtonColor = const Color(0xFF9BA3ED);
-
-
+  static Color titleTextColor = const Color(0xFF5E5E5E);
 }

@@ -10,7 +10,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:social_connect_app/core/navbar/navbar.dart' as _i3;
-import 'package:social_connect_app/features/home/presentation/pages/home_screen.dart'
+import 'package:social_connect_app/features/onboarding/presentation/pages/onboarding_screen/presentation/pages/home_screen.dart'
+   
     as _i1;
 import 'package:social_connect_app/features/messages/presentation/pages/messages.dart'
     as _i2;
@@ -59,6 +60,7 @@ abstract class $AppRouter extends _i7.RootStackRouter {
     Setting.name: (routeData) {
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
+        child: const _i1.OnboardingScreen(),
         child: const _i6.Setting(),
       );
     },
@@ -66,6 +68,9 @@ abstract class $AppRouter extends _i7.RootStackRouter {
 }
 
 /// generated route for
+/// [_i1.OnboardingScreen]
+class OnboardingRoute extends _i2.PageRouteInfo<void> {
+  const OnboardingRoute({List<_i2.PageRouteInfo>? children})
 /// [_i1.HomeScreen]
 class HomeRoute extends _i7.PageRouteInfo<void> {
   const HomeRoute({List<_i7.PageRouteInfo>? children})
@@ -140,10 +145,12 @@ class Profile extends _i7.PageRouteInfo<void> {
 class Setting extends _i7.PageRouteInfo<void> {
   const Setting({List<_i7.PageRouteInfo>? children})
       : super(
+          OnboardingRoute.name,
           Setting.name,
           initialChildren: children,
         );
 
+  static const String name = 'OnboardingRoute';
   static const String name = 'Setting';
 
   static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
