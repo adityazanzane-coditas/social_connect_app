@@ -30,11 +30,12 @@ class _CustomModalState extends State<CustomModal> {
     super.dispose();
   }
 
+
   Future<void> onSubmitData(
       BuildContext context, String postText, File? file) async {
 
     BlocProvider.of<PostBloc>(context).add(LoadingCreatePostEvent());
-    
+
     if (postText.isEmpty) {
       showDialog(
         context: context,

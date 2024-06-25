@@ -30,6 +30,7 @@ class CustomModalWrapper extends StatelessWidget {
             ),
           ),
         ),
+        
         Align(
           alignment: Alignment.topRight,
           child: SlideTransition(
