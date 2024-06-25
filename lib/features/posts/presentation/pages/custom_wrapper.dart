@@ -17,17 +17,14 @@ void showCustomModal(BuildContext context) {
 class CustomModalWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Stack(
-
       children: [
-
         GestureDetector(
           onTap: () {
             Navigator.of(context).pop();
           },
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10 , sigmaY: 10),
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
             child: Container(
               color: Colors.black.withOpacity(0),
             ),
@@ -35,15 +32,17 @@ class CustomModalWrapper extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.topRight,
-          child: SlideTransition( 
+          child: SlideTransition(
             position: Tween<Offset>(
               begin: const Offset(1.0, -1.0), // Start from top right
               end: Offset.zero,
-            ).animate(CurvedAnimation(
-              parent: ModalRoute.of(context)!.animation!,
-              curve: Curves.easeInOut,
-            )),
-            child: const CustomModal(),
+            ).animate(
+              CurvedAnimation(
+                parent: ModalRoute.of(context)!.animation!,
+                curve: Curves.easeInOut,
+              ),
+            ),
+            child: CustomModal(),
           ),
         ),
       ],
