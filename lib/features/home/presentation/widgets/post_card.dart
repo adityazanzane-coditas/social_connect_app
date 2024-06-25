@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:social_connect_app/features/home/domain/entity/post_entity.dart';
@@ -11,10 +13,9 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
       width: double.infinity,
       decoration: const BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(6)),
+        borderRadius: BorderRadius.all(Radius.circular(6)),
         color: Color(0xfff9f9f9),
       ),
       child: Column(
@@ -23,13 +24,13 @@ class PostCard extends StatelessWidget {
             padding: const EdgeInsets.all(24),
             child: Row(
               children: [
-                if (postEntity[index].profilePic.isNotEmpty && postEntity[index].profilePic != null)
+                if (postEntity[index].profilePic.isNotEmpty &&
+                    postEntity[index].profilePic != null)
                   ClipOval(
                     child: Image.network(
                       postEntity[index].profilePic,
                       width: 24,
                       height: 24,
-                      
                     ),
                   )
                 else
@@ -41,7 +42,7 @@ class PostCard extends StatelessWidget {
                 SizedBox(
                   width: 220,
                   child: Text(
-                    postEntity[index].userName,
+                    postEntity[index].phoneNumber.toString(),
                     style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -90,10 +91,17 @@ class PostCard extends StatelessWidget {
               postEntity[index].postUrl.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
-              child: Image.network(
-                postEntity[index].postUrl,
-                width: 334,
-                height: 223,
+              child: Container(
+                decoration: const BoxDecoration(
+                shape: BoxShape.rectangle,
+                
+                  borderRadius: BorderRadius.all(Radius.circular(50))
+                ),
+                child: Image.network(
+                  postEntity[index].postUrl,
+                  width: 334,
+                  height: 223,
+                ),
               ),
             ),
         ],

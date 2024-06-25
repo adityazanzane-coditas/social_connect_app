@@ -12,13 +12,13 @@ import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:social_connect_app/core/navbar/navbar.dart' as _i3;
 import 'package:social_connect_app/features/home/presentation/pages/home_screen.dart'
     as _i1;
-import 'package:social_connect_app/features/home/presentation/pages/messages.dart'
+import 'package:social_connect_app/features/messages/presentation/pages/messages.dart'
     as _i2;
-import 'package:social_connect_app/features/home/presentation/pages/profile.dart'
+import 'package:social_connect_app/features/posts/presentation/pages/posts.dart'
     as _i4;
-import 'package:social_connect_app/features/home/presentation/pages/posts.dart'
+import 'package:social_connect_app/features/profile/presentation/pages/profile.dart'
     as _i5;
-import 'package:social_connect_app/features/home/presentation/pages/setting.dart'
+import 'package:social_connect_app/features/setting/presentation/pages/setting.dart'
     as _i6;
 
 abstract class $AppRouter extends _i7.RootStackRouter {
@@ -32,10 +32,10 @@ abstract class $AppRouter extends _i7.RootStackRouter {
         child: const _i1.HomeScreen(),
       );
     },
-    Msg.name: (routeData) {
+    Messages.name: (routeData) {
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.Msg(),
+        child: const _i2.Messages(),
       );
     },
     Navbar.name: (routeData) {
@@ -44,16 +44,16 @@ abstract class $AppRouter extends _i7.RootStackRouter {
         child: const _i3.Navbar(),
       );
     },
+    PostsRoute.name: (routeData) {
+      return _i7.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i4.PostsScreen(),
+      );
+    },
     Profile.name: (routeData) {
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i4.Profile(),
-      );
-    },
-    Pst.name: (routeData) {
-      return _i7.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i5.Pst(),
+        child: const _i5.Profile(),
       );
     },
     Setting.name: (routeData) {
@@ -80,15 +80,15 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.Msg]
-class Msg extends _i7.PageRouteInfo<void> {
-  const Msg({List<_i7.PageRouteInfo>? children})
+/// [_i2.Messages]
+class Messages extends _i7.PageRouteInfo<void> {
+  const Messages({List<_i7.PageRouteInfo>? children})
       : super(
-          Msg.name,
+          Messages.name,
           initialChildren: children,
         );
 
-  static const String name = 'Msg';
+  static const String name = 'Messages';
 
   static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }
@@ -108,7 +108,21 @@ class Navbar extends _i7.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.Profile]
+/// [_i4.PostsScreen]
+class PostsRoute extends _i7.PageRouteInfo<void> {
+  const PostsRoute({List<_i7.PageRouteInfo>? children})
+      : super(
+          PostsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PostsRoute';
+
+  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.Profile]
 class Profile extends _i7.PageRouteInfo<void> {
   const Profile({List<_i7.PageRouteInfo>? children})
       : super(
@@ -117,20 +131,6 @@ class Profile extends _i7.PageRouteInfo<void> {
         );
 
   static const String name = 'Profile';
-
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i5.Pst]
-class Pst extends _i7.PageRouteInfo<void> {
-  const Pst({List<_i7.PageRouteInfo>? children})
-      : super(
-          Pst.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'Pst';
 
   static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
 }

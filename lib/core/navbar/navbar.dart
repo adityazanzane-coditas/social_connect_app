@@ -13,8 +13,8 @@ class Navbar extends StatelessWidget {
     return  AutoTabsRouter(
       routes: const [
         HomeRoute(),
-        Msg(),
-        Pst(),
+        Messages(),
+        PostsRoute(),
         Setting(),
         Profile()
 
@@ -25,7 +25,8 @@ class Navbar extends StatelessWidget {
           
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-           
+            
+            
             currentIndex: tabsRouter.activeIndex,
             onTap: (value) {
               tabsRouter.setActiveIndex(value);
@@ -37,8 +38,10 @@ class Navbar extends StatelessWidget {
             BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/navbar_setting.svg'),label: ''),
             BottomNavigationBarItem(icon: Image.asset('assets/icons/navbar_profile.png'),label: ''),
           ],
+       
         
           ),
+
         );
       },
     );
