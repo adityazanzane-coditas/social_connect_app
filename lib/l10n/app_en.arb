@@ -1,0 +1,27 @@
+{
+    "@@locale": "en",
+
+    "findYourTribe": "Find your tribe",
+    "joinCommunity": "Join the community",
+    "login": "Login",
+    "phoneNumber": "Phone Number",
+    "getOTP": "Get OTP",
+    "resendOTP": "Resend OTP",
+    "alreadyHaveAccount": "Already have an account? Login Now",
+    "setUpAccount": "Let’s Set up your account",
+    "username": "Username",
+    "usernameExists": "Username already exists",
+    "next": "Next",
+    "chooseAwkwardness": "Choose your awk-wardness",
+    "writeSomethingAboutYou": "Write something about you",
+    "writeBio": "Write Bio...",
+    "search": "Search...",
+    "whatsOnYourMind": "What’s on your mind...",
+    "addMedia": "Add media",
+    "post": "Post",
+    "chooseLanguage": "Choose Language",
+    "turnOnDarkTheme": "Turn on dark theme",
+    "logout": "Logout",
+    "changeBio": "Change Bio",
+    "congratulations": "Congratulations! You are now a proud awk-ward"
+  }

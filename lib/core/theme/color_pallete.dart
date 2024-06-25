@@ -16,6 +16,10 @@ class ColorPallete {
   static Color offWhiteOffTextColor = const Color(0xFFADADAD);
   static Color textFieldWhiteColor = const Color(0xFFCE9BED);
   static Color purpleButtonColor = const Color(0xFF9BA3ED);
+  static Color faintBlackTextColor = const Color(0xFF757575);
+    static Color logoutRedColor = const Color(0xFFFF8E8E);
+        static Color backgroundColor = const Color(0xFFFFFFFF);
+
 
 
 }
