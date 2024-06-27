@@ -4,40 +4,20 @@ import 'package:flutter/material.dart';
 
 
 
-class LanguageState {
+class SettingsState {
   final Locale locale;
 
-  LanguageState({this.locale = const Locale('en') });
+  SettingsState({this.locale = const Locale('en') });
 }
-class ShowLanguageDialogState extends LanguageState{
+class ShowLanguageDialogState extends SettingsState{
    ShowLanguageDialogState({required super.locale});
 }
 
-//class InitialLanguageState extends LanguageState{}
 
-// part of 'settings_bloc.dart';
+class ChangeThemeState extends SettingsState {
+  final bool isDarkModeEnabled;
 
-// @immutable
-// sealed class SettingsState {}
+  ChangeThemeState({this.isDarkModeEnabled = false});
 
-// class SettingsInitial extends SettingsState {}
-
-
-// class ShowLanguageDialogState extends SettingsState{
-// }
-
-// class ShowLoginScreenState extends SettingsState{}
-
-// class SelectedLanState extends SettingsState{}
-
-// class ShowLnaguageDialogState extends SettingsState{}
-
-// class ChangeLangugaeState extends SettingsState {
-//   final int selectedIndex;
-
-//    ChangeLangugaeState(this.selectedIndex);
-
-
-// }
-
-
+  
+}

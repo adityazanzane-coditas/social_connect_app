@@ -37,8 +37,6 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
       body: BlocListener<ProfileBloc, ProfileState>(
-        //  listenWhen: (previous, current) =>  current is ShowBottomModalSheetState,
-
         listener: (context, state) {
           if (state is ShowBottomModalSheetState) {
             log('state capture');
@@ -55,11 +53,9 @@ class ProfileScreen extends StatelessWidget {
                 );
               },
             );
-            log('state executed');
           } else if (state is ShowImagePickerOptionState) {
             showImagePickerOption(context);
 
-            print('after state emit');
           }
         },
         child: StreamBuilder<ProfileModel>(
@@ -84,7 +80,6 @@ class ProfileScreen extends StatelessWidget {
                       Stack(
                         children: [
                           Container(
-                            // height: 60,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: ColorPallete.liteOffWhiteTextColor,
@@ -106,14 +101,7 @@ class ProfileScreen extends StatelessWidget {
                                 },
                               ),
                             ),
-                            // child: ClipOval(
-                            //   child: Image.network(
-                            //     profile.profilePicture,
-                            //     fit: BoxFit.cover,
-                            //     width: 100,
-                            //     height: 100,
-                            //   ),
-                            // ),
+                         
                           ),
                           Positioned(
                             right: 5,
@@ -143,15 +131,7 @@ class ProfileScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Text(
-                            //   overflow: TextOverflow.ellipsis,
-                            //   profile.userName.toString(),
-                            //   style: fonts.alata(
-                            //     fontSize: 25,
-                            //     fontWeight: FontWeight.w400,
-                            //     color: ColorPallete.faintBlackTextColor,
-                            //   ),
-                            // ),
+                       
                             Text(
                               profile.phoneNumber.toString(),
                               overflow: TextOverflow.ellipsis,
@@ -225,10 +205,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // const Expanded(
-                  //   flex: 553,
-                  //   child: SizedBox(),
-                  // ),
+               
                   SizedBox(height: 553,)
                 ],
               ),

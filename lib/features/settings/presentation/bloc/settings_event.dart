@@ -3,36 +3,20 @@
 
 import 'package:flutter/material.dart';
 
-sealed class LanguageEvent{}
+sealed class SettingsEvent{}
 
-class LoadLocalizationEvent extends LanguageEvent{
+class LoadLocalizationEvent extends SettingsEvent{
   final Locale locale;
 
   LoadLocalizationEvent({required this.locale});
 }
 
-class LoadSavedLocalizationEvent extends LanguageEvent{}
+class LoadSavedLocalizationEvent extends SettingsEvent{}
 
-class LangugageDialogClickedEvent extends LanguageEvent {}
+class LangugageDialogClickedEvent extends SettingsEvent {}
 
-// part of 'settings_bloc.dart';
+class ThemeChangedEvent extends  SettingsEvent{
+  final bool isDarkModeEnabled;
 
-// @immutable
-// sealed class SettingsEvent {}
-
-// class ChooseLanguageEvent extends SettingsEvent {}
-
-// class TurnOnDarkThemeEvent extends SettingsEvent {}
-
-// class LogoutEvent extends SettingsEvent {}
-
-// class LangugageDialogClickedEvent extends SettingsEvent {}
-
-// class InitializeSettingsEvent extends SettingsEvent {}
-
-
-// class SelectedLanguageEvent extends SettingsEvent {
-//     final int selectedIndex;
-
-//    SelectedLanguageEvent(this.selectedIndex);
-// }
+  ThemeChangedEvent(this.isDarkModeEnabled);
+}

@@ -23,15 +23,3 @@ class ProfileRepositoryImpl implements ProfileReposotories {
   }
   // imageUrl
 }
-// class ProfileRepositoryImpl implements ProfileReposotories {
-//   final FirebaseDatasource datasource;
-
-//   ProfileRepositoryImpl(this.datasource);
-
-//   @override
-//   Stream<List<ProfileEntity>> getProfile() {
-//     return datasource.getProfile().map((profiles) => profiles.cast<ProfileEntity>());
-//   }
-
- 
-// }

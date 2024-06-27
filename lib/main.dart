@@ -28,26 +28,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<LanguageBloc>(
+        BlocProvider<SettingsBloc>(
             create: (context) =>
-                LanguageBloc()..add(LoadSavedLocalizationEvent())),
+                SettingsBloc()..add(LoadSavedLocalizationEvent())),
 
         BlocProvider(
           create: (_) => ProfileBloc(),
         ),
-        // BlocProvider(
-        //   create: (_) => SettingsBloc(),
-        // )
+     
       ],
-      child: BlocBuilder<LanguageBloc, LanguageState>(
+      child: BlocBuilder<SettingsBloc, SettingsState>(
         buildWhen: (previous, current) => current is !ShowLanguageDialogState,
         
         builder: (context, state) {
           return MaterialApp.router(
             locale: state.locale,
-            // supportedLocales: AppLocalizations.supportedLocales,
-            // supportedLocales: [Locale('en'), Locale('mr'), Locale('ta')],
-            // localizationsDelegates: AppLocalizations.localizationsDelegates,
+       
             localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

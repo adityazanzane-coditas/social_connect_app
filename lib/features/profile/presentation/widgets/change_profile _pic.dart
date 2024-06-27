@@ -84,19 +84,18 @@ Future<void> uploadImageToFirestore(File image, BuildContext context) async {
 
     String imageUrl = await ref.getDownloadURL();
     firebaseDatasource.updateImageUrl(imageUrl);
-    print('************Image uploaded to Firestore****************: $imageUrl');
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('Image uploaded successfully'),
+      const SnackBar(
+        content: Text('Image uploaded successfully'),
         backgroundColor: Colors.green,
       ),
     );
   } catch (e) {
     print('Image uploading failed: $e');
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('Failed to upload image'),
+      const SnackBar(
+        content: Text('Failed to upload image'),
         backgroundColor: Colors.red,
       ),
     );

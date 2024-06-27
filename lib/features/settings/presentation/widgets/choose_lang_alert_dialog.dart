@@ -10,6 +10,8 @@ import 'package:social_connect_app/features/settings/presentation/bloc/settings_
 import 'package:social_connect_app/features/settings/presentation/bloc/settings_state.dart';
 
 class LanguageSelectionDialog extends StatefulWidget {
+  const LanguageSelectionDialog({super.key});
+
   @override
   _LanguageSelectionDialogState createState() =>
       _LanguageSelectionDialogState();
@@ -21,11 +23,9 @@ class _LanguageSelectionDialogState extends State<LanguageSelectionDialog> {
 
   final Fonts fonts = Fonts();
 
-  // var groupValue = "mr";
 
   @override
   Widget build(BuildContext context) {
-    // final groupValue = context.read<LanguageBloc>().state.locale.languageCode;
 
     return AlertDialog(
       
@@ -62,15 +62,13 @@ class _LanguageSelectionDialogState extends State<LanguageSelectionDialog> {
             ),
           ],
         ),
-        content: BlocConsumer<LanguageBloc, LanguageState>(
+        content: BlocConsumer<SettingsBloc, SettingsState>(
           listener: (context, state) {
-            // TODO: implement listener
           },
           builder: (context, state) {
             String groupValue = state.locale.languageCode;
-// print('*****************************$groupValue');
             return Container(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 30),
               width: MediaQuery.of(context).size.width * 0.5,
               height: MediaQuery.of(context).size.height * 0.24,
               child: ListView.builder(
@@ -90,11 +88,11 @@ class _LanguageSelectionDialogState extends State<LanguageSelectionDialog> {
                           print(groupValue);
                           print(item.languageCode);
 
-                          BlocProvider.of<LanguageBloc>(context).add(
+                          BlocProvider.of<SettingsBloc>(context).add(
                               LoadLocalizationEvent(
                                   locale: Locale(item.languageCode)));
                         },
-                        title: Text(item.language, style: TextStyle(fontSize: 20),),
+                        title: Text(item.language, style: const TextStyle(fontSize: 20),),
                         subtitle: Text(item.sublanguage),
                       );
                     },
