@@ -5,6 +5,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:social_connect_app/core/di/dependency_injection_container.dart';
 import 'package:social_connect_app/core/routes/app_router.dart';
 import 'package:social_connect_app/features/authentication/presentation/bloc/auth_bloc.dart';
+import 'package:social_connect_app/features/messages/data/datasources/firestore_datasource.dart';
+import 'package:social_connect_app/features/messages/data/repositories/chat_repository_impl.dart';
+import 'package:social_connect_app/features/messages/domain/usecases/get_chats.dart';
+import 'package:social_connect_app/features/messages/domain/usecases/get_messages.dart';
+import 'package:social_connect_app/features/messages/domain/usecases/send_message.dart';
+import 'package:social_connect_app/features/messages/presentation/bloc/chat_bloc.dart';
+import 'package:social_connect_app/features/messages/presentation/bloc/chat_event.dart';
 import 'package:social_connect_app/features/onboarding/presentation/bloc/onboarding_bloc.dart';
 
 import 'package:social_connect_app/firebase_options.dart';
@@ -37,6 +44,25 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AuthBloc(),
+        ),
+        BlocProvider<ChatBloc>(
+          create: (context) => ChatBloc(
+            getChats: GetChats(
+              ChatRepositoryImpl(
+                FirestoreDataSource(),
+              ),
+            ),
+            getMessages: GetMessages(
+              ChatRepositoryImpl(
+                FirestoreDataSource(),
+              ),
+            ),
+            sendMessage: SendMessage(
+              ChatRepositoryImpl(
+                FirestoreDataSource(),
+              ),
+            ),
+          )..add(InitialEvent()),
         ),
       ],
       child: MaterialApp.router(
