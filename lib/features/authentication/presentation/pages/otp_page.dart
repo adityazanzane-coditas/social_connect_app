@@ -144,6 +144,19 @@ class _MyWidgetState extends State<OtpPage> {
                           ),
                           child: const CircularProgressIndicator(),
                         );
+                      case SuccessAuthenticatingUser():
+                        return ElevatedButton(
+                          onPressed: null,
+                          style: ElevatedButton.styleFrom(
+                            // backgroundColor: ColorPallete.blueColor,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                          ),
+                          child: const CircularProgressIndicator(),
+                        );
                       case ErrorAuthenticatingUser():
                         return CustomButton(
                             otpCode: otpCode,
