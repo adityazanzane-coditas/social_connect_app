@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:social_connect_app/core/routes/app_router.gr.dart';
-
+import 'package:social_connect_app/features/posts/presentation/pages/custom_wrapper.dart';
 
 @RoutePage()
 class Navbar extends StatelessWidget {
@@ -10,38 +12,38 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  AutoTabsRouter(
+    return AutoTabsRouter(
       routes: const [
         HomeRoute(),
         Messages(),
-        PostsRoute(),
+        // HomeRoute(),
         Setting(),
         Profile()
-
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return  Scaffold(
-          
+        return Scaffold(
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-            
-            
             currentIndex: tabsRouter.activeIndex,
             onTap: (value) {
               tabsRouter.setActiveIndex(value);
             },
             items: [
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/navbar_home.svg'),label: ''),
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/nav_messages.svg'),label: ''),
-            BottomNavigationBarItem(icon: Image.asset('assets/icons/navbar_posts.png'),label: ''),
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/icons/navbar_setting.svg'),label: ''),
-            BottomNavigationBarItem(icon: Image.asset('assets/icons/navbar_profile.png'),label: ''),
-          ],
-       
-        
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset('assets/icons/navbar_home.svg'),
+                  label: ''),
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset('assets/icons/nav_messages.svg'),
+                  label: ''),
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset('assets/icons/navbar_setting.svg'),
+                  label: ''),
+              BottomNavigationBarItem(
+                  icon: Image.asset('assets/icons/navbar_profile.png'),
+                  label: ''),
+            ],
           ),
-
         );
       },
     );

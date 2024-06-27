@@ -93,10 +93,8 @@ class PostCard extends StatelessWidget {
               padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
               child: Container(
                 decoration: const BoxDecoration(
-                shape: BoxShape.rectangle,
-                
-                  borderRadius: BorderRadius.all(Radius.circular(50))
-                ),
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.all(Radius.circular(50))),
                 child: Image.network(
                   postEntity[index].postUrl,
                   width: 334,

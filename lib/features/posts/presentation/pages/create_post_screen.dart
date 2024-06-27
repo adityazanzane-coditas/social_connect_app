@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+import 'dart:ui' as ui;
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -30,16 +31,16 @@ class _CustomModalState extends State<CustomModal> {
     super.dispose();
   }
 
-
   Future<void> onSubmitData(
       BuildContext context, String postText, File? file) async {
-
-    BlocProvider.of<PostBloc>(context).add(LoadingCreatePostEvent());
+    final builderContext = context;
 
     if (postText.isEmpty) {
+      log("Post text is empty, showing dialog.");
+
       showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
+        context: builderContext,
+        builder: (builderContext) => AlertDialog(
           title: Text(
             "Invalid Input",
             style: GoogleFonts.poppins(
@@ -65,8 +66,14 @@ class _CustomModalState extends State<CustomModal> {
         ),
       );
 
+      log("Dialog should be displayed.");
+
       return;
     }
+
+    BlocProvider.of<PostBloc>(context).add(LoadingCreatePostEvent());
+
+    log("After Loading event triggered !");
 
     String imageUrl = "";
     if (file != null) {
@@ -75,8 +82,10 @@ class _CustomModalState extends State<CustomModal> {
 
         final ref = FirebaseStorage.instance
             .ref()
-            .child('user_images')
+            .child('posts_images')
             .child('${uuid.v4()}.jpg');
+
+        log("took reference of firebase ");
 
         await ref.putFile(file);
 
@@ -85,7 +94,6 @@ class _CustomModalState extends State<CustomModal> {
         imageUrl = await ref.getDownloadURL();
 
         log("Post text : $postText\n Image url : $imageUrl");
-
       } catch (e) {
         log("Error uploading image: $e");
       }
@@ -186,13 +194,15 @@ class _CustomModalState extends State<CustomModal> {
     return FractionallySizedBox(
       heightFactor: 0.7,
       alignment: Alignment.topRight,
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Color.fromRGBO(238, 192, 124, 1),
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(200),
-              bottomRight: Radius.circular(0)),
-        ),
+      // child: Container(
+      //   decoration: const BoxDecoration(
+      //     color: Color.fromRGBO(238, 192, 124, 1),
+      //     borderRadius: BorderRadius.only(
+      //         bottomLeft: Radius.circular(200),
+      //         bottomRight: Radius.circular(0)),
+      //   ),
+      child: CustomPaint(
+        painter: RPSCustomPainter(),
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: Column(
@@ -261,12 +271,10 @@ class _CustomModalState extends State<CustomModal> {
                   ),
                 ),
               ),
-
               const Expanded(
                 flex: 24,
                 child: SizedBox(),
               ),
-
               Row(
                 children: [
                   ElevatedButton(
@@ -275,11 +283,9 @@ class _CustomModalState extends State<CustomModal> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(46)),
                     ),
-
                     onPressed: () {
                       showChooseImageModalSheet(context);
                     },
-
                     child: Row(
                       children: [
                         const Icon(
@@ -299,8 +305,6 @@ class _CustomModalState extends State<CustomModal> {
                         ),
                       ],
                     ),
-
-
                   ),
                   const Expanded(
                     flex: 10,
@@ -342,7 +346,7 @@ class _CustomModalState extends State<CustomModal> {
                             color: Colors.white,
                           );
 
-                        default:
+                        case PostInitial:
                           return ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -368,6 +372,9 @@ class _CustomModalState extends State<CustomModal> {
                               ),
                             ),
                           );
+
+                        default:
+                          return Text("Default State");
                       }
                     },
                   ),
@@ -380,5 +387,52 @@ class _CustomModalState extends State<CustomModal> {
         ),
       ),
     );
+  }
+}
+
+class RPSCustomPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Layer 1
+    Paint paintFill = Paint()
+      ..color = ui.Color.fromRGBO(238, 192, 124, 1)
+      ..style = PaintingStyle.fill;
+
+    Path path = Path();
+
+    path.moveTo(0, 0);
+
+    path.lineTo(0, size.height * 0.85);
+
+    // First control point downward
+    double controlPointX1 = size.width / 2;
+    double controlPointY1 = size.height * 1.1;
+
+    double endPointX1 = size.width;
+    double endPointY1 = size.height * 0.95;
+
+    path.quadraticBezierTo(
+      controlPointX1,
+      controlPointY1,
+      endPointX1,
+      endPointY1,
+    );
+
+    path.lineTo(size.width, size.height);
+
+    path.lineTo(size.width, 0);
+    canvas.drawPath(path, paintFill);
+
+    Paint paintStroke = Paint()
+      ..color = const Color.fromARGB(255, 33, 150, 243)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = size.width * 0.00;
+
+    canvas.drawPath(path, paintStroke);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }

@@ -9,8 +9,11 @@ class Messages extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
-      
-        children: [Center(child: Text('MSG'),)],
+        children: [
+          Center(
+            child: Text('MSG'),
+          )
+        ],
       ),
     );
   }

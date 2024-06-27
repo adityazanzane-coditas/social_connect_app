@@ -8,7 +8,6 @@ final class OnNavButtonClickedEvent extends OnboardingEvent {
   OnNavButtonClickedEvent({required this.isLastPage});
 }
 
-
 final class OnGetStartedButtonClickedEvent extends OnboardingEvent {}
 
 final class OnSkipButtonClickedEvent extends OnboardingEvent {}

@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:social_connect_app/features/posts/presentation/bloc/post_bloc.dart';
 import 'package:social_connect_app/features/posts/presentation/pages/create_post_screen.dart';
 
 void showCustomModal(BuildContext context) {
@@ -9,6 +11,7 @@ void showCustomModal(BuildContext context) {
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     builder: (context) {
+      BlocProvider.of<PostBloc>(context).add(PostInitialEvent());
       return CustomModalWrapper();
     },
   );
@@ -30,7 +33,6 @@ class CustomModalWrapper extends StatelessWidget {
             ),
           ),
         ),
-        
         Align(
           alignment: Alignment.topRight,
           child: SlideTransition(

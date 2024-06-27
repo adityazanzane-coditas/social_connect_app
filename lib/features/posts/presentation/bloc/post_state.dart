@@ -5,9 +5,6 @@ sealed class PostState {}
 
 final class PostInitial extends PostState {}
 
-class CreatePostState extends PostState{}
+class CreatePostState extends PostState {}
 
-class LoadingCreatePostState extends PostState{}
-
-
-
+class LoadingCreatePostState extends PostState {}
