@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_connect_app/core/theme/fonts.dart';
-//message bubbles
+//message bubble
 class MessageBubble extends StatelessWidget {
   const MessageBubble.first({
     super.key,
