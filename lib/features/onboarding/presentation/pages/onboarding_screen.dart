@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:social_connect_app/core/constants/key_constants.dart';
+import 'package:social_connect_app/core/routes/app_router.gr.dart';
 import 'package:social_connect_app/core/theme/color_pallete.dart';
 import 'package:social_connect_app/core/theme/fonts.dart';
 import 'package:social_connect_app/features/onboarding/presentation/bloc/onboarding_bloc.dart';
@@ -49,7 +49,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('State Rebuilt');
     return Scaffold(
       backgroundColor: ColorPallete.whiteColor,
       body: Stack(
@@ -102,7 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           Positioned(
-            bottom: 60,
+            bottom: 30,
             left: 0,
             right: 0,
             child: BlocConsumer<OnboardingBloc, OnboardingState>(
@@ -152,8 +151,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Future<void> _onGetStarted(BuildContext context) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool(KeyConstants.LOGIN_KEY, true);
-    // context.replace('/home');
+    pref.setBool('hasOnboardedOnce', true);
+    context.replaceRoute(
+      const UserRegisterRoute(),
+    );
   }
 
   void _onBack() => _controller.previousPage(
