@@ -126,7 +126,7 @@ class _MyWidgetState extends State<OtpPage> {
               //   ],
               // ),
               // const Expanded(flex: 1, child: SizedBox()),
-              //check
+              
               SizedBox(
                 width: double.infinity,
                 child: BlocBuilder<AuthBloc, AuthState>(
