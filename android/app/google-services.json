@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:825030845854:android:6702b843faccda040fe28f",
+        "mobilesdk_app_id": "1:825030845854:android:fcbf567ed4f789330fe28f",
         "android_client_info": {
           "package_name": "com.example.social_connect_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "825030845854-mpu6vktij0asvrbbi12f41inmgj6gp68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAWzqblCQWO5QGgYZ8BjKwH8rpuqzGXvVA"
@@ -20,7 +25,91 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825030845854-mpu6vktij0asvrbbi12f41inmgj6gp68.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "825030845854-qkij9onln44gc508g5kcjt88h4bshgtl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.socialConnectApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825030845854:android:55561744a202a78a0fe28f",
+        "android_client_info": {
+          "package_name": "com.social.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825030845854-mpu6vktij0asvrbbi12f41inmgj6gp68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWzqblCQWO5QGgYZ8BjKwH8rpuqzGXvVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825030845854-mpu6vktij0asvrbbi12f41inmgj6gp68.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "825030845854-qkij9onln44gc508g5kcjt88h4bshgtl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.socialConnectApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825030845854:android:6702b843faccda040fe28f",
+        "android_client_info": {
+          "package_name": "com.social_connect_app.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825030845854-mpu6vktij0asvrbbi12f41inmgj6gp68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWzqblCQWO5QGgYZ8BjKwH8rpuqzGXvVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825030845854-mpu6vktij0asvrbbi12f41inmgj6gp68.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "825030845854-qkij9onln44gc508g5kcjt88h4bshgtl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.socialConnectApp"
+              }
+            }
+          ]
         }
       }
     }

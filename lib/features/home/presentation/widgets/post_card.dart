@@ -55,14 +55,17 @@ class PostCard extends StatelessWidget {
                   flex: 62,
                   child: SizedBox(),
                 ),
-                Text(
-                  postEntity[index].postDate.dayMonthYear(),
-                  style: GoogleFonts.nunitoSans(
-                    fontSize: 12,
-                    fontWeight: FontWeight.normal,
-                    color: const Color(0xffADADAD),
+                SizedBox(
+                  width: 40,
+                  child: Text(
+                    postEntity[index].postDate.dayMonthYear(),
+                    style: GoogleFonts.nunitoSans(
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                      color: const Color(0xffADADAD),
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  overflow: TextOverflow.fade,
                 ),
                 const Expanded(
                   child: SizedBox(),

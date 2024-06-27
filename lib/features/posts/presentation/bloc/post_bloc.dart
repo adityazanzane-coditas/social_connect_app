@@ -5,6 +5,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:social_connect_app/core/di/dependency_injection_container.dart';
+import 'package:social_connect_app/features/authentication/data/datasources/auth_datasource.dart';
+
 
 import 'package:social_connect_app/features/posts/data/models/post_model.dart';
 import 'package:social_connect_app/features/posts/domain/usecase/post_usecase.dart';
@@ -24,12 +26,14 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       CreatePostEvent event, Emitter<PostState> emit) async {
     log("Creating postmodel");
 
+   
+    log("Profile url : $currentUserImageURL");
     PostModel postModel = PostModel(
         post_date: DateTime.now(),
         post_text: event.postText,
         post_url: event.postURL,
-        profile_pic: "",
-        phone_no: '9876543210');
+        profile_pic: currentUserImageURL ?? "",
+        phone_no: currentUserPhoneNo.toString());
 
     log("Calling create post firebase service");
 
