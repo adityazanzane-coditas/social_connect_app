@@ -11,8 +11,8 @@ class ProfileRepositoryImpl implements ProfileReposotories {
   ProfileRepositoryImpl(this.datasource,);
 
   @override
-  Stream<ProfileModel> getProfile() {
-    return datasource.getProfile();
+  Stream<ProfileModel> getProfile(String uid) {
+    return datasource.getProfile(uid);
   }
     @override
   Future<void>updateProfileBio(String newBio) {

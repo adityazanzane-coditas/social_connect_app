@@ -28,6 +28,7 @@ class _LanguageSelectionDialogState extends State<LanguageSelectionDialog> {
     // final groupValue = context.read<LanguageBloc>().state.locale.languageCode;
 
     return AlertDialog(
+      
         titleTextStyle:
             const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
         titlePadding: const EdgeInsets.only(top: 5, bottom: 20),
@@ -67,11 +68,11 @@ class _LanguageSelectionDialogState extends State<LanguageSelectionDialog> {
           },
           builder: (context, state) {
             String groupValue = state.locale.languageCode;
-print('*****************************$groupValue');
+// print('*****************************$groupValue');
             return Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
               width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.24,
               child: ListView.builder(
                 padding: EdgeInsets.zero,
                 itemCount: languageModel.length,
@@ -93,7 +94,7 @@ print('*****************************$groupValue');
                               LoadLocalizationEvent(
                                   locale: Locale(item.languageCode)));
                         },
-                        title: Text(item.language),
+                        title: Text(item.language, style: TextStyle(fontSize: 20),),
                         subtitle: Text(item.sublanguage),
                       );
                     },

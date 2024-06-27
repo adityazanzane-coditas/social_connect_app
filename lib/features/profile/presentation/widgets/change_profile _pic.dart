@@ -7,7 +7,7 @@ import 'package:social_connect_app/core/theme/color_pallete.dart';
 
 void showImagePickerOption(BuildContext context) {
   showModalBottomSheet(
-    backgroundColor: ColorPallete.whiteColor,
+    backgroundColor: ColorPallete.orangeColor,
     context: context,
     builder: (builder) {
       return Padding(

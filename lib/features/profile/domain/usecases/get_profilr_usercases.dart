@@ -8,8 +8,8 @@ class GetProfileUseCase {
 
   GetProfileUseCase(this.repository);
 
-  Stream<ProfileEntity> call() {
-    return repository.getProfile();
+  Stream<ProfileEntity> call(String uid) {
+    return repository.getProfile(uid);
   }
 
 }

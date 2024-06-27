@@ -1,6 +1,7 @@
 {
     "@@locale": "en",
-
+    
+    "awkwardly": "awk-wardly",
     "findYourTribe": "Find your tribe",
     "joinCommunity": "Join the community",
     "login": "Login",

@@ -6,27 +6,27 @@ import 'package:social_connect_app/features/profile/data/model/profile_model.dar
 class FirebaseDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  Stream<ProfileModel> getProfile() {
-    return _firestore
-        .collection('user_info')
-        .doc('CwEC5KOeqTm768l1AFXz')
+  Stream<ProfileModel> getProfile(String uid) {
+ 
+      try {
+         return _firestore
+        .collection('registered_users')
+        .doc('73x5M7xbusc6I3IlKx0CeANrhdc2')
         .snapshots()
         .map((snapshot) =>
             ProfileModel.fromMap(snapshot.data() as Map<String, dynamic>));
+    } catch (e) {
+      print('Error in getting profile bio: $e');
+      throw e;
+    }
   }
-
-  //  Future<void> updateProfile(String newBio) {
-
-  //  return  _firestore.collection('user_info')
-  //     .doc('ezPLnoXP2k1Niv9bkncv')
-  //     .update({'bio': newBio});
-  // }
 
   Future<void> updateProfileBio(String newBio) async {
     try {
-      DocumentReference profileRef = _firestore.collection('user_info').doc(
-          'CwEC5KOeqTm768l1AFXz'); 
-          print('intupdate*********');
+      DocumentReference profileRef = _firestore
+          .collection('registered_users')
+          .doc('73x5M7xbusc6I3IlKx0CeANrhdc2');
+      print('intupdate*********');
       print(newBio);
       await profileRef.update({'bio': newBio});
     } catch (e) {
@@ -34,56 +34,18 @@ class FirebaseDatasource {
       throw e;
     }
   }
+
   Future<void> updateImageUrl(String imageUrl) async {
     try {
-      DocumentReference profileRef = _firestore.collection('user_info').doc(
-          'CwEC5KOeqTm768l1AFXz'); 
-          print('In upadate image url*********');
+      DocumentReference profileRef = _firestore
+          .collection('registered_users')
+          .doc('73x5M7xbusc6I3IlKx0CeANrhdc2');
+      print('In upadate image url*********');
       print(imageUrl);
-      await profileRef.update({'profile_picture': imageUrl});
+      await profileRef.update({'imageUrl': imageUrl});
     } catch (e) {
       print('Error updating bio: $e');
       throw e;
     }
   }
-
-// class FirebaseDatasource {
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-//   Stream<List<ProfileModel>> getProfile() {
-//     return _firestore.collection('user_info').snapshots().map(
-//           (snapshot) => snapshot.docs
-//               .map((doc) => ProfileModel.fromMap(doc.data()))
-//               .toList(),
-//         );
-//   }
-
-// }
-
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:social_connect_app/features/settings/data/model/profile_model.dart';
-
-// class FirebaseDatasource {
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-//   Stream<List<ProfileModel>> getProfile() {
-//     return _firestore.collection('user_info').snapshots().map(
-//           (snapshot) => snapshot.docs
-//               .map((doc) => ProfileModel.fromMap(doc.data() as Map<String, dynamic>))
-//               .toList(),
-//         );
-//   }
-// }
-
-  // void updateBio(String userId, String newBio) {
-  //   _firestore.collection('user_info')
-  //     .doc(userId)
-  //     .update({'bio': newBio});
-  // }
-  // void updateProfile(ProfileModel newData){
-
-  //   _firestore.collection('user_info')
-  //   .doc('8tqPHmDhUpPNWei6QPWw')
-  //   .update(newData as Map<String, dynamic>);
-  // }
 }

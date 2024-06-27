@@ -40,22 +40,25 @@ class _BioEditBottomSheetState extends State<BioEditBottomSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
-
               controller: _bioController,
               maxLines: 8,
               maxLength: 600,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.black,
               ),
               decoration: InputDecoration(
+                
                 hintStyle: fonts.popins(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: ColorPallete.faintBlackTextColor,
                 ),
                 hintText: 'Enter your bio',
+                filled: true,
+                fillColor: ColorPallete.whiteColor,
                 border: OutlineInputBorder(
+
                   borderRadius: BorderRadius.circular(20.0),
                 ),
               ),

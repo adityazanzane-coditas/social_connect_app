@@ -2,7 +2,7 @@ import 'package:social_connect_app/features/profile/data/model/profile_model.dar
 import 'package:social_connect_app/features/profile/domain/entity/entity.dart';
 
 abstract class ProfileReposotories {
-  Stream<ProfileModel> getProfile();
+  Stream<ProfileModel> getProfile(String uid);
   Future<void> updateProfileBio(String newBio);
   Future<void> updateImageUrl(String imageUrl);
 }

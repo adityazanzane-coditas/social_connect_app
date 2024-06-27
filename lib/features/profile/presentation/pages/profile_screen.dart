@@ -27,7 +27,8 @@ class ProfileScreen extends StatelessWidget {
           padding:
               const EdgeInsets.only(left: 10, top: 24, right: 24, bottom: 32),
           child: Text(
-            'awk-wardly',
+            // 'awk-wardly',
+            AppLocalizations.of(context)!.awkwardly,
             style: fonts.alata(
                 fontSize: 32,
                 fontWeight: FontWeight.w400,
@@ -42,6 +43,7 @@ class ProfileScreen extends StatelessWidget {
           if (state is ShowBottomModalSheetState) {
             log('state capture');
             showModalBottomSheet(
+              backgroundColor: ColorPallete.orangeColor,
               isScrollControlled: true,
               context: context,
               builder: (context) {
@@ -54,17 +56,14 @@ class ProfileScreen extends StatelessWidget {
               },
             );
             log('state executed');
-          }
-           else if (state is ShowImagePickerOptionState) {
+          } else if (state is ShowImagePickerOptionState) {
             showImagePickerOption(context);
-           
-       
-            print('after state emit');
 
+            print('after state emit');
           }
         },
         child: StreamBuilder<ProfileModel>(
-          stream: firebaseDatasource.getProfile(),
+          stream: firebaseDatasource.getProfile('73x5M7xbusc6I3IlKx0CeANrhdc2'),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
@@ -96,8 +95,25 @@ class ProfileScreen extends StatelessWidget {
                                 fit: BoxFit.cover,
                                 width: 100,
                                 height: 100,
+                                errorBuilder: (BuildContext context,
+                                    Object exception, StackTrace? stackTrace) {
+                                  return Image.asset(
+                                    'assets/icons/profile_emoji.png', 
+                                    fit: BoxFit.cover,
+                                    width: 100,
+                                    height: 100,
+                                  );
+                                },
                               ),
                             ),
+                            // child: ClipOval(
+                            //   child: Image.network(
+                            //     profile.profilePicture,
+                            //     fit: BoxFit.cover,
+                            //     width: 100,
+                            //     height: 100,
+                            //   ),
+                            // ),
                           ),
                           Positioned(
                             right: 5,
@@ -108,12 +124,7 @@ class ProfileScreen extends StatelessWidget {
                                     .add(ShowImagePickerOptionEvent());
                                 print('after event emit');
                                 print(profile.profilePicture);
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => PickImage(),
-                                //   ),
-                                // );
+                       
                               },
                               child: CircleAvatar(
                                 radius: 18,
@@ -132,15 +143,15 @@ class ProfileScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              overflow: TextOverflow.ellipsis,
-                              profile.userName.toString(),
-                              style: fonts.alata(
-                                fontSize: 25,
-                                fontWeight: FontWeight.w400,
-                                color: ColorPallete.faintBlackTextColor,
-                              ),
-                            ),
+                            // Text(
+                            //   overflow: TextOverflow.ellipsis,
+                            //   profile.userName.toString(),
+                            //   style: fonts.alata(
+                            //     fontSize: 25,
+                            //     fontWeight: FontWeight.w400,
+                            //     color: ColorPallete.faintBlackTextColor,
+                            //   ),
+                            // ),
                             Text(
                               profile.phoneNumber.toString(),
                               overflow: TextOverflow.ellipsis,
@@ -189,7 +200,7 @@ class ProfileScreen extends StatelessWidget {
                             log('event added');
                           },
                           icon: Padding(
-                            padding: EdgeInsets.only(left: 0, right: 8),
+                            padding: const EdgeInsets.only(left: 0, right: 8),
                             child: SvgPicture.asset(
                               'assets/icons/edit.svg',
                               width: 24,
@@ -198,8 +209,7 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           label: Text(
                             // 'Change Bio',
-                                                  AppLocalizations.of(context)!.changeBio,
-
+                            AppLocalizations.of(context)!.changeBio,
                             style: fonts.alata(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -215,10 +225,11 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Expanded(
-                    flex: 553,
-                    child: SizedBox(),
-                  ),
+                  // const Expanded(
+                  //   flex: 553,
+                  //   child: SizedBox(),
+                  // ),
+                  SizedBox(height: 553,)
                 ],
               ),
             );
