@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:social_connect_app/core/routes/app_router.gr.dart';
 import 'package:social_connect_app/features/authentication/data/models/user_model.dart';
 
+String? currentUserPhoneNo;
+String? currentUserImageURL;
+
 class AuthDatasource {
   Future<void> phoneVerification(
       String phoneNumber, BuildContext context) async {
@@ -42,6 +45,25 @@ class AuthDatasource {
         .get();
 
     if (snapShot.exists) {
+      // currentUser = UserModel.fromMap(user as  Map<String,dynamic> );
+      currentUserPhoneNo = user.phoneNumber;
+
+      Map<String, dynamic> currentUserMap = await FirebaseFirestore.instance
+          .collection("registered_users")
+          .doc(user.uid)
+          .get()
+          .then((doc) {
+        if (doc.exists) {
+          return doc.data() as Map<String, dynamic>;
+        } else {
+          throw Exception("User not found");
+        }
+      });
+
+      currentUserImageURL = currentUserMap['imageUrl'];
+
+      log("current phone : $currentUserPhoneNo");
+      log("current imageURL : $currentUserImageURL");
       log("User Exists");
       return true;
     }
@@ -87,6 +109,8 @@ class AuthDatasource {
           .then((onValue) {
         success = true;
       });
+
+      if (success == true) {}
       return success ?? false;
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

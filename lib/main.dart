@@ -6,10 +6,11 @@ import 'package:social_connect_app/core/di/dependency_injection_container.dart';
 import 'package:social_connect_app/core/routes/app_router.dart';
 import 'package:social_connect_app/features/authentication/presentation/bloc/auth_bloc.dart';
 import 'package:social_connect_app/features/onboarding/presentation/bloc/onboarding_bloc.dart';
+import 'package:social_connect_app/features/posts/presentation/bloc/post_bloc.dart';
 
 import 'package:social_connect_app/firebase_options.dart';
 
-void main() async {
+void main() async  {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
@@ -37,6 +38,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => PostBloc(),
         ),
       ],
       child: MaterialApp.router(
