@@ -11,9 +11,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       // body: Center(child: Text('Hiiiii'),),
-      // body: ProfileScreen(),
-      // body: SettingsScreen(),
       body: ProfileScreen(),
+      // body: SettingsScreen(),
+      // body: ProfileScreen(),
 
     );
   }

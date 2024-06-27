@@ -1,12 +1,17 @@
-
-// 2
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:social_connect_app/core/theme/color_pallete.dart';
 import 'package:social_connect_app/core/theme/fonts.dart';
+import 'package:social_connect_app/features/profile/presentation/widgets/change_profile%20_pic.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:social_connect_app/features/settings/presentation/bloc/settings_bloc.dart';
+import 'package:social_connect_app/features/settings/presentation/bloc/settings_event.dart';
+import 'package:social_connect_app/features/settings/presentation/bloc/settings_state.dart';
+import 'package:social_connect_app/features/settings/presentation/pages/dummy.dart';
+import 'package:social_connect_app/features/settings/presentation/widgets/choose_lang_alert_dialog.dart';
 import 'package:social_connect_app/features/settings/presentation/widgets/select_language_dialog.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -20,7 +25,8 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorPallete.backgroundColor,
         title: Padding(
-          padding: const EdgeInsets.only(left: 10, top: 24, right: 24, bottom: 32),
+          padding:
+              const EdgeInsets.only(left: 10, top: 24, right: 24, bottom: 32),
           child: Text(
             'awk-wardly',
             style: fonts.alata(
@@ -31,108 +37,255 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: BlocConsumer<SettingsBloc, SettingsState>(
-      
-             listenWhen: (previous, current) {
-        return current is! ShowLnaguageDialogState;
-      },
-      // buildWhen: (previous, current) {
-      //   return current is! ShowLnaguageDialogState;
-      // },
+      body: BlocListener<LanguageBloc, LanguageState>(
         listener: (context, state) {
-          log('Listener executed********');
-          showLanguageDialog(context);
-      
-        },
-        builder: (context, state) {
-          return BlocBuilder<SettingsBloc, SettingsState>(
-            builder: (context, state) {
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: ListView(
-                  children: [
-                    Column(
-                      children: [
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        ListTile(
-                          leading: SvgPicture.asset('assets/icons/globe.svg'),
-                          title: Text(
-                            'Choose Language',
-                            style: fonts.alata(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w400,
-                              color: ColorPallete.faintBlackTextColor,
-                            ),
-                          ),
-                          onTap: () {
-                            log("ListTile tapped");
-                            BlocProvider.of<SettingsBloc>(context).add(LangugageDialogClickedEvent());
-                          },
-                        ),
-                        Divider(
-                          thickness: 0.7,
-                          height: 15,
-                          color: ColorPallete.faintBlackTextColor,
-                        ),
-                        ListTile(
-                          leading: SvgPicture.asset('assets/icons/moon.svg'),
-                          title: Text(
-                            'Turn on dark theme',
-                            style: fonts.alata(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w400,
-                              color: ColorPallete.faintBlackTextColor,
-                            ),
-                          ),
-                          onTap: () {},
-                        ),
-                        Divider(
-                          height: 15,
-                          thickness: 0.7,
-                          color: ColorPallete.faintBlackTextColor,
-                        ),
-                        ListTile(
-                          leading: SvgPicture.asset('assets/icons/log-out.svg'),
-                          title: Text(
-                            'Logout',
-                            style: fonts.alata(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w400,
-                              color: ColorPallete.logoutRedColor,
-                            ),
-                          ),
-                          onTap: () {},
-                        ),
-                        Divider(
-                          thickness: 0.7,
-                          height: 15,
-                          color: ColorPallete.faintBlackTextColor,
-                        ),
-                        SizedBox(
-                          height: 519,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+          switch (state.runtimeType) {
+            case ShowLanguageDialogState:
+              log("after showdialog");
+              showDialog(
+                context: context,
+                builder: (context) => LanguageSelectionDialog(),
               );
-            },
-         
-          );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => DummyPage()),
+            // );
+          }
         },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: ListView(
+            children: [
+              Column(
+                children: [
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/icons/globe.svg'),
+                    title: Text(
+                      // 'Choose Language',
+                      AppLocalizations.of(context)!.chooseLanguage,
+
+                      style: fonts.alata(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
+                        color: ColorPallete.faintBlackTextColor,
+                      ),
+                    ),
+                    onTap: () {
+                      log("ListTile tapped");
+                      BlocProvider.of<LanguageBloc>(context)
+                          .add(LangugageDialogClickedEvent());
+                      print('Event exe');
+                    },
+                  ),
+                  Divider(
+                    thickness: 0.7,
+                    height: 15,
+                    color: ColorPallete.faintBlackTextColor,
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/icons/moon.svg'),
+                    title: Text(
+                      // 'Turn on dark theme',
+                      AppLocalizations.of(context)!.turnOnDarkTheme,
+
+                      style: fonts.alata(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
+                        color: ColorPallete.faintBlackTextColor,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  Divider(
+                    height: 15,
+                    thickness: 0.7,
+                    color: ColorPallete.faintBlackTextColor,
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset('assets/icons/log-out.svg'),
+                    title: Text(
+                      // 'Logout',
+                      AppLocalizations.of(context)!.logout,
+
+                      style: fonts.alata(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400,
+                        color: ColorPallete.logoutRedColor,
+                      ),
+                    ),
+                    onTap: () {},
+                  ),
+                  Divider(
+                    thickness: 0.7,
+                    height: 15,
+                    color: ColorPallete.faintBlackTextColor,
+                  ),
+                  SizedBox(
+                    height: 519,
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
 
+// // 2
 
+// import 'dart:developer';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_svg/svg.dart';
+// import 'package:social_connect_app/core/theme/color_pallete.dart';
+// import 'package:social_connect_app/core/theme/fonts.dart';
+// import 'package:social_connect_app/features/profile/presentation/widgets/change_profile%20_pic.dart';
+// import 'package:social_connect_app/features/settings/presentation/bloc/settings_bloc.dart';
+// import 'package:social_connect_app/features/settings/presentation/bloc/settings_event.dart';
+// import 'package:social_connect_app/features/settings/presentation/bloc/settings_state.dart';
+// import 'package:social_connect_app/features/settings/presentation/widgets/alert_dialog.dart';
+// import 'package:social_connect_app/features/settings/presentation/widgets/select_language_dialog.dart';
 
+// class SettingsScreen extends StatelessWidget {
+//   SettingsScreen({super.key});
+//   final Fonts fonts = Fonts();
 
+//   @override
+//   Widget build(BuildContext context) {
+//     // var groupValue = context.read<LanguageBloc>().state.locale.languageCode;
+//     return Scaffold(
+//       backgroundColor: ColorPallete.backgroundColor,
+//       appBar: AppBar(
+//         backgroundColor: ColorPallete.backgroundColor,
+//         title: Padding(
+//           padding:
+//               const EdgeInsets.only(left: 10, top: 24, right: 24, bottom: 32),
+//           child: Text(
+//             'awk-wardly',
+//             style: fonts.alata(
+//               fontSize: 32,
+//               fontWeight: FontWeight.w400,
+//               color: ColorPallete.orangeColor,
+//             ),
+//           ),
+//         ),
+//       ),
+//       body: BlocListener<LanguageBloc, LanguageState>(
+//          listenWhen: (previous, current) => current is ShowLanguageDialogState,
+//         listener: (context, state) {
+//           if(state is ShowLanguageDialogState){
+//                showDialog(
+//             context: context,
+//             builder: (context) => LanguageSelectionDialog(),
 
-// //1
+//           );
+//             // showImagePickerOption(context);
+
+//           // showLanguageDialog(context);
+//           //  Navigator.push(
+//           //     context,
+//           //     MaterialPageRoute(builder: (context) => LanguageSelectionDialog()),
+//           //   );
+//           log("after showdialog");
+//           }
+//         },
+//         child: Container(
+//           padding: const EdgeInsets.symmetric(horizontal: 24),
+//           child: ListView(
+//             children: [
+//               Column(
+//                 children: [
+//                   const SizedBox(
+//                     height: 24,
+//                   ),
+//                   ListTile(
+//                     leading: SvgPicture.asset('assets/icons/globe.svg'),
+//                     title: Text(
+//                       'Choose Language',
+//                       style: fonts.alata(
+//                         fontSize: 24,
+//                         fontWeight: FontWeight.w400,
+//                         color: ColorPallete.faintBlackTextColor,
+//                       ),
+//                     ),
+//                     onTap: () {
+//                       log("ListTile tapped");
+//                       BlocProvider.of<LanguageBloc>(context)
+//                           .add(LangugageDialogClickedEvent());
+//                       print('Event exe');
+//                     },
+//                   ),
+//                   Divider(
+//                     thickness: 0.7,
+//                     height: 15,
+//                     color: ColorPallete.faintBlackTextColor,
+//                   ),
+//                   ListTile(
+//                     leading: SvgPicture.asset('assets/icons/moon.svg'),
+//                     title: Text(
+//                       'Turn on dark theme',
+//                       style: fonts.alata(
+//                         fontSize: 24,
+//                         fontWeight: FontWeight.w400,
+//                         color: ColorPallete.faintBlackTextColor,
+//                       ),
+//                     ),
+//                     onTap: () {},
+//                   ),
+//                   Divider(
+//                     height: 15,
+//                     thickness: 0.7,
+//                     color: ColorPallete.faintBlackTextColor,
+//                   ),
+//                   ListTile(
+//                     leading: SvgPicture.asset('assets/icons/log-out.svg'),
+//                     title: Text(
+//                       'Logout',
+//                       style: fonts.alata(
+//                         fontSize: 24,
+//                         fontWeight: FontWeight.w400,
+//                         color: ColorPallete.logoutRedColor,
+//                       ),
+//                     ),
+//                     onTap: () {},
+//                   ),
+//                   Divider(
+//                     thickness: 0.7,
+//                     height: 15,
+//                     color: ColorPallete.faintBlackTextColor,
+//                   ),
+//                   SizedBox(
+//                     height: 519,
+//                   )
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+
+//       //       listener: (context, state) {
+//       //    groupValue = state.locale.languageCode;
+//       //       if (state is ShowLanguageDialogState) {
+//       //     //  showLanguageDialog(context);
+//       //     showDialog(
+//       //       context: context,
+//       //       builder: (context) => LanguageSelectionDialog(),
+
+//       //     );
+//       //   }
+//       //  },
+//     );
+//   }
+// }
+
+// // //1
 
 // // import 'dart:developer';
 
@@ -166,7 +319,7 @@ class SettingsScreen extends StatelessWidget {
 // //           ),
 // //         ),
 // //       ),
-// //       body: BlocConsumer<SettingsBloc, SettingsState>(
+// //       body: BlocConsumer<LanguageBloc, LanguageState>(
 // //         // listenWhen: (previous, current) {
 // //         //   return current is! ShowLnaguageDialogState;
 // //         // },
@@ -175,7 +328,7 @@ class SettingsScreen extends StatelessWidget {
 // //         //   return current is! ShowLnaguageDialogState;
 // //         // },
 // //         listener: (context, state) {
-// //           if (state is ShowLnaguageDialogState) {
+// //           if (state is ShowLanguageDialogState) {
 // //             log("State emitted *****************");
 // //             // showLanguageDialog(context);
 // //             showLanguageDialog(context);
@@ -186,7 +339,7 @@ class SettingsScreen extends StatelessWidget {
 // //           }
 // //         },
 // //         builder: (context, state) {
-// //           return BlocBuilder<SettingsBloc, SettingsState>(
+// //           return BlocBuilder<LanguageBloc, LanguageState>(
 // //             builder: (context, state) {
 // //               return Container(
 // //                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -208,7 +361,7 @@ class SettingsScreen extends StatelessWidget {
 // //                                 color: ColorPallete.faintBlackTextColor),
 // //                           ),
 // //                           onTap: () {
-// //                             BlocProvider.of<SettingsBloc>(context)
+// //                             BlocProvider.of<LanguageBloc>(context)
 // //                                 .add(LangugageDialogClickedEvent());
 // //                           },
 // //                         ),

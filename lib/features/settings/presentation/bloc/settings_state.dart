@@ -1,36 +1,43 @@
+
+
+import 'package:flutter/material.dart';
+
+
+
+class LanguageState {
+  final Locale locale;
+
+  LanguageState({this.locale = const Locale('en') });
+}
+class ShowLanguageDialogState extends LanguageState{
+   ShowLanguageDialogState({required super.locale});
+}
+
+//class InitialLanguageState extends LanguageState{}
+
 // part of 'settings_bloc.dart';
 
-// sealed class ProfileState extends Equatable {
-//   const ProfileState();
-  
-//   @override
-//   List<Object> get props => [];
+// @immutable
+// sealed class SettingsState {}
+
+// class SettingsInitial extends SettingsState {}
+
+
+// class ShowLanguageDialogState extends SettingsState{
 // }
 
-// final class SettingsInitial extends ProfileState {}
-part of 'settings_bloc.dart';
+// class ShowLoginScreenState extends SettingsState{}
 
-@immutable
-sealed class SettingsState {}
+// class SelectedLanState extends SettingsState{}
 
-class SettingsInitial extends SettingsState {}
+// class ShowLnaguageDialogState extends SettingsState{}
 
+// class ChangeLangugaeState extends SettingsState {
+//   final int selectedIndex;
 
-class ShowLanguageDialogState extends SettingsState{
-}
-
-class ShowLoginScreenState extends SettingsState{}
-
-class SelectedLanState extends SettingsState{}
-
-class ShowLnaguageDialogState extends SettingsState{}
-
-class ChangeLangugaeState extends SettingsState {
-  final int selectedIndex;
-
-   ChangeLangugaeState(this.selectedIndex);
+//    ChangeLangugaeState(this.selectedIndex);
 
 
-}
+// }
 
 

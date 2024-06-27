@@ -30,7 +30,7 @@ class _BioEditBottomSheetState extends State<BioEditBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.of(context).viewInsets.bottom;
-  final Fonts fonts = Fonts();
+    final Fonts fonts = Fonts();
 
     return Padding(
       padding: EdgeInsets.only(
@@ -40,39 +40,46 @@ class _BioEditBottomSheetState extends State<BioEditBottomSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
+
               controller: _bioController,
-              maxLines: null,
+              maxLines: 8,
+              maxLength: 600,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black,
               ),
               decoration: InputDecoration(
                 hintStyle: fonts.popins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: ColorPallete.faintBlackTextColor,
-                            ),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: ColorPallete.faintBlackTextColor,
+                ),
                 hintText: 'Enter your bio',
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                widget.onSave(_bioController.text);
-                Navigator.of(context).pop();
-              },
-              child: Text('Submit', style: fonts.popins(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: ColorPallete.whiteColor,
-                            ),),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorPallete.purpleButtonColor,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+              child: ElevatedButton(
+                onPressed: () {
+                  widget.onSave(_bioController.text);
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Submit',
+                  style: fonts.popins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: ColorPallete.whiteColor,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: ColorPallete.purpleButtonColor,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                ),
               ),
             ),
           ],
@@ -81,10 +88,3 @@ class _BioEditBottomSheetState extends State<BioEditBottomSheet> {
     );
   }
 }
-
-
-
-
-
-
-

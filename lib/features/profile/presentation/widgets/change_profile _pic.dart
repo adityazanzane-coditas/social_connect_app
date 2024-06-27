@@ -3,56 +3,60 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:social_connect_app/features/profile/data/datasourec/firebase_datasource.dart';
+import 'package:social_connect_app/core/theme/color_pallete.dart';
 
 void showImagePickerOption(BuildContext context) {
   showModalBottomSheet(
-    backgroundColor: Colors.blue[100],
+    backgroundColor: ColorPallete.whiteColor,
     context: context,
     builder: (builder) {
       return Padding(
         padding: const EdgeInsets.all(18.0),
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height / 4.5,
-          child: Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    _pickImage(ImageSource.gallery, context);
-                  },
-                  child: const SizedBox(
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.image,
-                          size: 70,
-                        ),
-                        Text("Gallery")
-                      ],
+          height: MediaQuery.of(context).size.height / 5.5,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30),
+            child: Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      _pickImage(ImageSource.gallery, context);
+                    },
+                    child: const SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.image,
+                            size: 70,
+                          ),
+                          Text("Gallery")
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    _pickImage(ImageSource.camera, context);
-                  },
-                  child: const SizedBox(
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.camera_alt,
-                          size: 70,
-                        ),
-                        Text("Camera")
-                      ],
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      _pickImage(ImageSource.camera, context);
+                    },
+                    child: const SizedBox(
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.camera_alt,
+                            size: 70,
+                          ),
+                          Text("Camera")
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );
@@ -89,7 +93,7 @@ Future<void> uploadImageToFirestore(File image, BuildContext context) async {
       ),
     );
   } catch (e) {
-    print('Error uploading image to Firestore: $e');
+    print('Image uploading failed: $e');
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: const Text('Failed to upload image'),

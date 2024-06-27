@@ -11,6 +11,5 @@ class GetProfileUseCase {
   Stream<ProfileEntity> call() {
     return repository.getProfile();
   }
-  
 
 }

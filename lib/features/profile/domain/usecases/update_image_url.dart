@@ -8,6 +8,4 @@ class UpdateImageUrl {
   Future<void> call(String imageUrl) {
     return repository.updateImageUrl(imageUrl);
   }
-  
-
 }

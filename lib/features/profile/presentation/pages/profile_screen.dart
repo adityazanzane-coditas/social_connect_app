@@ -10,6 +10,7 @@ import 'package:social_connect_app/features/profile/data/model/profile_model.dar
 import 'package:social_connect_app/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:social_connect_app/features/profile/presentation/widgets/change_bio_bottom_sheet.dart';
 import 'package:social_connect_app/features/profile/presentation/widgets/change_profile%20_pic.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -53,25 +54,13 @@ class ProfileScreen extends StatelessWidget {
               },
             );
             log('state executed');
-          } 
-          else if (state is ShowImagePickerOptionState) {
+          }
+           else if (state is ShowImagePickerOptionState) {
             showImagePickerOption(context);
-            //  showModalBottomSheet(
-            //   isScrollControlled: true,
-            //   context: context,
-            //   builder: (context) {
-            //     return showImagePickerOption(context);
-            //   },
-            // );
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => PickImage(),
-            //   ),
-            // );
+           
+       
             print('after state emit');
 
-            // showImagePickerOption(context);
           }
         },
         child: StreamBuilder<ProfileModel>(
@@ -96,17 +85,17 @@ class ProfileScreen extends StatelessWidget {
                       Stack(
                         children: [
                           Container(
+                            // height: 60,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: ColorPallete.liteOffWhiteTextColor,
                             ),
                             child: ClipOval(
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(32.0),
-                                  child: Image.asset(
-                                      'assets/icons/profile_emoji.png'),
-                                ),
+                              child: Image.network(
+                                profile.profilePicture,
+                                fit: BoxFit.cover,
+                                width: 100,
+                                height: 100,
                               ),
                             ),
                           ),
@@ -115,11 +104,10 @@ class ProfileScreen extends StatelessWidget {
                             top: 65,
                             child: InkWell(
                               onTap: () {
-
                                 BlocProvider.of<ProfileBloc>(context)
                                     .add(ShowImagePickerOptionEvent());
-                                    print('after event emit');
-
+                                print('after event emit');
+                                print(profile.profilePicture);
                                 // Navigator.push(
                                 //   context,
                                 //   MaterialPageRoute(
@@ -171,17 +159,21 @@ class ProfileScreen extends StatelessWidget {
                     flex: 40,
                     child: SizedBox(),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12, right: 6),
-                    child: Text(
-                      textAlign: TextAlign.left,
-                      profile.bio.toString(),
-                      style: fonts.nunitoSans(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: ColorPallete.purpleButtonColor,
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12, right: 6),
+                        child: Text(
+                          textAlign: TextAlign.left,
+                          profile.bio.toString(),
+                          style: fonts.nunitoSans(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: ColorPallete.purpleButtonColor,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                   const Expanded(
                     flex: 25,
@@ -205,7 +197,9 @@ class ProfileScreen extends StatelessWidget {
                             ),
                           ),
                           label: Text(
-                            'Change Bio',
+                            // 'Change Bio',
+                                                  AppLocalizations.of(context)!.changeBio,
+
                             style: fonts.alata(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
