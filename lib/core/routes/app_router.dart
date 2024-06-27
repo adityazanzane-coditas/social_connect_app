@@ -7,23 +7,17 @@ class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: OnboardingRoute.page),
-        AutoRoute(
-          page: Navbar.page,
-          initial: true,
-          guards: [
-            AuthGuard(),
-          ],
-          children: [
-            AutoRoute(page: HomeRoute.page),
-            AutoRoute(page: Messages.page, children: [
-              AutoRoute(page: ChatRoute.page),
-              AutoRoute(page: AddUserRoute.page),
-            ]),
-            AutoRoute(page: PostsRoute.page),
-            AutoRoute(page: Setting.page),
-            AutoRoute(page: Profile.page),
-          ],
-        ),
+        AutoRoute(page: Navbar.page, initial: true, guards: [
+          AuthGuard(),
+        ], children: [
+          AutoRoute(page: HomeRoute.page),
+          AutoRoute(page: Messages.page, children: [
+            AutoRoute(page: ChatRoute.page),
+            AutoRoute(page: AddUserRoute.page),
+          ]),
+          AutoRoute(page: Setting.page),
+          AutoRoute(page: Profile.page),
+        ]),
         AutoRoute(page: UserRegisterRoute.page),
         AutoRoute(page: OtpRoute.page),
         AutoRoute(page: UserInformationRoute.page),

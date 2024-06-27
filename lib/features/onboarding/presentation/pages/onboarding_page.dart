@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:social_connect_app/core/theme/color_pallete.dart';
 import 'package:social_connect_app/core/theme/fonts.dart';
 
-
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage(
       {super.key,

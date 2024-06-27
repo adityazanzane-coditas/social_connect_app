@@ -8,15 +8,15 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i13;
-import 'package:flutter/material.dart' as _i14;
+import 'package:auto_route/auto_route.dart' as _i12;
+import 'package:flutter/material.dart' as _i13;
 import 'package:social_connect_app/core/navbar/navbar.dart' as _i5;
 import 'package:social_connect_app/features/authentication/presentation/pages/otp_page.dart'
     as _i7;
 import 'package:social_connect_app/features/authentication/presentation/pages/user_information_page.dart'
-    as _i11;
+    as _i10;
 import 'package:social_connect_app/features/authentication/presentation/pages/user_register_page.dart'
-    as _i12;
+    as _i11;
 import 'package:social_connect_app/features/home/presentation/pages/home_screen.dart'
     as _i3;
 import 'package:social_connect_app/features/messages/presentation/pages/add_user_screen.dart'
@@ -27,27 +27,25 @@ import 'package:social_connect_app/features/messages/presentation/pages/message_
     as _i4;
 import 'package:social_connect_app/features/onboarding/presentation/pages/onboarding_screen.dart'
     as _i6;
-import 'package:social_connect_app/features/posts/presentation/pages/posts.dart'
-    as _i8;
 import 'package:social_connect_app/features/profile/presentation/pages/profile.dart'
-    as _i9;
+    as _i8;
 import 'package:social_connect_app/features/setting/presentation/pages/setting.dart'
-    as _i10;
+    as _i9;
 
-abstract class $AppRouter extends _i13.RootStackRouter {
+abstract class $AppRouter extends _i12.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i13.PageFactory> pagesMap = {
+  final Map<String, _i12.PageFactory> pagesMap = {
     AddUserRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i1.AddUserScreen(),
       );
     },
     ChatRoute.name: (routeData) {
       final args = routeData.argsAs<ChatRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.ChatScreen(
           key: args.key,
@@ -56,32 +54,32 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i3.HomeScreen(),
       );
     },
     Messages.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i4.Messages(),
       );
     },
     Navbar.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i5.Navbar(),
       );
     },
     OnboardingRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const _i6.OnboardingScreen(),
       );
     },
     OtpRoute.name: (routeData) {
       final args = routeData.argsAs<OtpRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i7.OtpPage(
           key: args.key,
@@ -90,29 +88,23 @@ abstract class $AppRouter extends _i13.RootStackRouter {
         ),
       );
     },
-    PostsRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i8.PostsScreen(),
-      );
-    },
     Profile.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.Profile(),
+        child: const _i8.Profile(),
       );
     },
     Setting.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i10.Setting(),
+        child: const _i9.Setting(),
       );
     },
     UserInformationRoute.name: (routeData) {
       final args = routeData.argsAs<UserInformationRouteArgs>();
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i11.UserInformationPage(
+        child: _i10.UserInformationPage(
           key: args.key,
           phoneNumber: args.phoneNumber,
           uid: args.uid,
@@ -120,9 +112,9 @@ abstract class $AppRouter extends _i13.RootStackRouter {
       );
     },
     UserRegisterRoute.name: (routeData) {
-      return _i13.AutoRoutePage<dynamic>(
+      return _i12.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i12.UserRegisterPage(),
+        child: const _i11.UserRegisterPage(),
       );
     },
   };
@@ -130,8 +122,8 @@ abstract class $AppRouter extends _i13.RootStackRouter {
 
 /// generated route for
 /// [_i1.AddUserScreen]
-class AddUserRoute extends _i13.PageRouteInfo<void> {
-  const AddUserRoute({List<_i13.PageRouteInfo>? children})
+class AddUserRoute extends _i12.PageRouteInfo<void> {
+  const AddUserRoute({List<_i12.PageRouteInfo>? children})
       : super(
           AddUserRoute.name,
           initialChildren: children,
@@ -139,16 +131,16 @@ class AddUserRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'AddUserRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.ChatScreen]
-class ChatRoute extends _i13.PageRouteInfo<ChatRouteArgs> {
+class ChatRoute extends _i12.PageRouteInfo<ChatRouteArgs> {
   ChatRoute({
-    _i14.Key? key,
+    _i13.Key? key,
     required String phoneNumber,
-    List<_i13.PageRouteInfo>? children,
+    List<_i12.PageRouteInfo>? children,
   }) : super(
           ChatRoute.name,
           args: ChatRouteArgs(
@@ -160,8 +152,8 @@ class ChatRoute extends _i13.PageRouteInfo<ChatRouteArgs> {
 
   static const String name = 'ChatRoute';
 
-  static const _i13.PageInfo<ChatRouteArgs> page =
-      _i13.PageInfo<ChatRouteArgs>(name);
+  static const _i12.PageInfo<ChatRouteArgs> page =
+      _i12.PageInfo<ChatRouteArgs>(name);
 }
 
 class ChatRouteArgs {
@@ -170,7 +162,7 @@ class ChatRouteArgs {
     required this.phoneNumber,
   });
 
-  final _i14.Key? key;
+  final _i13.Key? key;
 
   final String phoneNumber;
 
@@ -182,8 +174,8 @@ class ChatRouteArgs {
 
 /// generated route for
 /// [_i3.HomeScreen]
-class HomeRoute extends _i13.PageRouteInfo<void> {
-  const HomeRoute({List<_i13.PageRouteInfo>? children})
+class HomeRoute extends _i12.PageRouteInfo<void> {
+  const HomeRoute({List<_i12.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -191,13 +183,13 @@ class HomeRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.Messages]
-class Messages extends _i13.PageRouteInfo<void> {
-  const Messages({List<_i13.PageRouteInfo>? children})
+class Messages extends _i12.PageRouteInfo<void> {
+  const Messages({List<_i12.PageRouteInfo>? children})
       : super(
           Messages.name,
           initialChildren: children,
@@ -205,13 +197,13 @@ class Messages extends _i13.PageRouteInfo<void> {
 
   static const String name = 'Messages';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i5.Navbar]
-class Navbar extends _i13.PageRouteInfo<void> {
-  const Navbar({List<_i13.PageRouteInfo>? children})
+class Navbar extends _i12.PageRouteInfo<void> {
+  const Navbar({List<_i12.PageRouteInfo>? children})
       : super(
           Navbar.name,
           initialChildren: children,
@@ -219,13 +211,13 @@ class Navbar extends _i13.PageRouteInfo<void> {
 
   static const String name = 'Navbar';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i6.OnboardingScreen]
-class OnboardingRoute extends _i13.PageRouteInfo<void> {
-  const OnboardingRoute({List<_i13.PageRouteInfo>? children})
+class OnboardingRoute extends _i12.PageRouteInfo<void> {
+  const OnboardingRoute({List<_i12.PageRouteInfo>? children})
       : super(
           OnboardingRoute.name,
           initialChildren: children,
@@ -233,17 +225,17 @@ class OnboardingRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'OnboardingRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i7.OtpPage]
-class OtpRoute extends _i13.PageRouteInfo<OtpRouteArgs> {
+class OtpRoute extends _i12.PageRouteInfo<OtpRouteArgs> {
   OtpRoute({
-    _i14.Key? key,
+    _i13.Key? key,
     required String phoneNumber,
     required String verificationId,
-    List<_i13.PageRouteInfo>? children,
+    List<_i12.PageRouteInfo>? children,
   }) : super(
           OtpRoute.name,
           args: OtpRouteArgs(
@@ -256,8 +248,8 @@ class OtpRoute extends _i13.PageRouteInfo<OtpRouteArgs> {
 
   static const String name = 'OtpRoute';
 
-  static const _i13.PageInfo<OtpRouteArgs> page =
-      _i13.PageInfo<OtpRouteArgs>(name);
+  static const _i12.PageInfo<OtpRouteArgs> page =
+      _i12.PageInfo<OtpRouteArgs>(name);
 }
 
 class OtpRouteArgs {
@@ -267,7 +259,7 @@ class OtpRouteArgs {
     required this.verificationId,
   });
 
-  final _i14.Key? key;
+  final _i13.Key? key;
 
   final String phoneNumber;
 
@@ -280,23 +272,9 @@ class OtpRouteArgs {
 }
 
 /// generated route for
-/// [_i8.PostsScreen]
-class PostsRoute extends _i13.PageRouteInfo<void> {
-  const PostsRoute({List<_i13.PageRouteInfo>? children})
-      : super(
-          PostsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'PostsRoute';
-
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i9.Profile]
-class Profile extends _i13.PageRouteInfo<void> {
-  const Profile({List<_i13.PageRouteInfo>? children})
+/// [_i8.Profile]
+class Profile extends _i12.PageRouteInfo<void> {
+  const Profile({List<_i12.PageRouteInfo>? children})
       : super(
           Profile.name,
           initialChildren: children,
@@ -304,13 +282,13 @@ class Profile extends _i13.PageRouteInfo<void> {
 
   static const String name = 'Profile';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i10.Setting]
-class Setting extends _i13.PageRouteInfo<void> {
-  const Setting({List<_i13.PageRouteInfo>? children})
+/// [_i9.Setting]
+class Setting extends _i12.PageRouteInfo<void> {
+  const Setting({List<_i12.PageRouteInfo>? children})
       : super(
           Setting.name,
           initialChildren: children,
@@ -318,18 +296,18 @@ class Setting extends _i13.PageRouteInfo<void> {
 
   static const String name = 'Setting';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i11.UserInformationPage]
+/// [_i10.UserInformationPage]
 class UserInformationRoute
-    extends _i13.PageRouteInfo<UserInformationRouteArgs> {
+    extends _i12.PageRouteInfo<UserInformationRouteArgs> {
   UserInformationRoute({
-    _i14.Key? key,
+    _i13.Key? key,
     required String phoneNumber,
     required String uid,
-    List<_i13.PageRouteInfo>? children,
+    List<_i12.PageRouteInfo>? children,
   }) : super(
           UserInformationRoute.name,
           args: UserInformationRouteArgs(
@@ -342,8 +320,8 @@ class UserInformationRoute
 
   static const String name = 'UserInformationRoute';
 
-  static const _i13.PageInfo<UserInformationRouteArgs> page =
-      _i13.PageInfo<UserInformationRouteArgs>(name);
+  static const _i12.PageInfo<UserInformationRouteArgs> page =
+      _i12.PageInfo<UserInformationRouteArgs>(name);
 }
 
 class UserInformationRouteArgs {
@@ -353,7 +331,7 @@ class UserInformationRouteArgs {
     required this.uid,
   });
 
-  final _i14.Key? key;
+  final _i13.Key? key;
 
   final String phoneNumber;
 
@@ -366,9 +344,9 @@ class UserInformationRouteArgs {
 }
 
 /// generated route for
-/// [_i12.UserRegisterPage]
-class UserRegisterRoute extends _i13.PageRouteInfo<void> {
-  const UserRegisterRoute({List<_i13.PageRouteInfo>? children})
+/// [_i11.UserRegisterPage]
+class UserRegisterRoute extends _i12.PageRouteInfo<void> {
+  const UserRegisterRoute({List<_i12.PageRouteInfo>? children})
       : super(
           UserRegisterRoute.name,
           initialChildren: children,
@@ -376,5 +354,5 @@ class UserRegisterRoute extends _i13.PageRouteInfo<void> {
 
   static const String name = 'UserRegisterRoute';
 
-  static const _i13.PageInfo<void> page = _i13.PageInfo<void>(name);
+  static const _i12.PageInfo<void> page = _i12.PageInfo<void>(name);
 }

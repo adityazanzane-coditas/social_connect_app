@@ -9,9 +9,11 @@ class Setting extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
-        children: [Center(
-          child: Text('Settings'),
-        )],
+        children: [
+          Center(
+            child: Text('Settings'),
+          )
+        ],
       ),
     );
   }

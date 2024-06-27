@@ -13,10 +13,11 @@ import 'package:social_connect_app/features/messages/domain/usecases/send_messag
 import 'package:social_connect_app/features/messages/presentation/bloc/chat_bloc.dart';
 import 'package:social_connect_app/features/messages/presentation/bloc/chat_event.dart';
 import 'package:social_connect_app/features/onboarding/presentation/bloc/onboarding_bloc.dart';
+import 'package:social_connect_app/features/posts/presentation/bloc/post_bloc.dart';
 
 import 'package:social_connect_app/firebase_options.dart';
 
-void main() async {
+void main() async  {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
@@ -62,7 +63,9 @@ class MyApp extends StatelessWidget {
                 FirestoreDataSource(),
               ),
             ),
-          )..add(InitialEvent()),
+          )..add(InitialEvent()),),
+        BlocProvider(
+          create: (context) => PostBloc(),
         ),
       ],
       child: MaterialApp.router(

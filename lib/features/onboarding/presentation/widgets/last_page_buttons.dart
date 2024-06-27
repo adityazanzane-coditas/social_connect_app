@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:social_connect_app/core/theme/color_pallete.dart';
 import 'package:social_connect_app/core/theme/fonts.dart';
 
-
 class LastPageButtonsWidgets extends StatelessWidget {
   const LastPageButtonsWidgets(
       {super.key, required this.onGetStarted, required this.onBack});
@@ -32,8 +31,8 @@ class LastPageButtonsWidgets extends StatelessWidget {
           child: SizedBox(),
         ),
         FilledButton(
-          onPressed: ()  {
-              return onGetStarted(context);
+          onPressed: () {
+            return onGetStarted(context);
           },
           style: FilledButton.styleFrom(
             backgroundColor: ColorPallete.orangeColor,
