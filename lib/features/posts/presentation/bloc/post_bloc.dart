@@ -7,7 +7,6 @@ import 'package:meta/meta.dart';
 import 'package:social_connect_app/core/di/dependency_injection_container.dart';
 import 'package:social_connect_app/features/authentication/data/datasources/auth_datasource.dart';
 
-
 import 'package:social_connect_app/features/posts/data/models/post_model.dart';
 import 'package:social_connect_app/features/posts/domain/usecase/post_usecase.dart';
 
@@ -26,7 +25,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       CreatePostEvent event, Emitter<PostState> emit) async {
     log("Creating postmodel");
 
-   
+    log("Phone no : $currentUserPhoneNo");
     log("Profile url : $currentUserImageURL");
     PostModel postModel = PostModel(
         post_date: DateTime.now(),
